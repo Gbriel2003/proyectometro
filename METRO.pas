@@ -1,40 +1,40 @@
 program metro;
 uses crt;
 
-var 
+var //SE DECLARAN LAS VARIABLES
  subestacion:char;
  boletos, ticket, viaje, linea, salida, llegada, comprar:Integer;
  cedula, nombre, salidat, llegadat, pasaje,viajes, opcion :string;
  nboletos, preciou, monto, cambio: real;
 
-BEGIN
+BEGIN  //SE INICIA EL PROGRAMA
 	writeln('---------------------------------------------------------------');
 	writeln('BIENVENIDO AL SISTEMA DE COMPRA DE BOLETOS DEL METRO DE CARACAS');
 	writeln('---------------------------------------------------------------');
 	repeat
-	writeln('ELIJA UNA OPCION');
+	writeln('ELIJA UNA OPCION');   // SE LE INDICA AL USUARIO SI QUIERE COMPRAR UN BOLETO O NO
 	writeln('1. COMPRAR BOLETO');
 	writeln('2. SALIR');
 	writeln('---------------------------------------------------------------');
 	readln(boletos);
 	clrscr;
-	 if boletos=1 then
+	 if boletos=1 then  // EN EL CASO DE QUE SI QUIERA COMPRAR UN BOLETO, SE LE PIDE LO SIGUIENTE
 	 begin
 	 writeln(' -----------------------------------  ');
      writeln ('  INGRESE SU NUMERO DE CEDULA');
-     readln(cedula);
+     readln(cedula);  // SU CEDULA
      writeln ('  INGRESE SU NOMBRE');
-     readln(nombre);
+     readln(nombre); // SU NOMBRE
      writeln ('-----------------------------------');
      writeln ('CUANTOS BOLETOS DESEAS COMPRAR?');
-     readln(nboletos);
+     readln(nboletos); // CUANTOS BOLETOS QUIERE COMPRAR
      clrscr();
      writeln(' ---------------------------------  ');
-     writeln(' CEDULA:  ', cedula);
+     writeln(' CEDULA:  ', cedula);// AQUI SE LE MUESTRA AL USUARIO LA CEDULA Y EL NOMBRE INGRESADO
      writeln(' NOMBRE:  ', nombre);
      writeln ('---------------------------------  ');
      repeat
-	 writeln('SELECCIONE EL TIPO DE BOLETO');
+	 writeln('SELECCIONE EL TIPO DE BOLETO'); //SE LE MUESTRAN AL USUARIO LOS TIPOS DE BOLETOS EXISTENTES
 	 textcolor(yellow);
 	 writeln('a BOLETO SIMPLE/ AMARILLO/ COBERTURA 1 VIAJE EN METRO');
 	 writeln('b INTEGRADO/ AMARILLO/ 1 VIAJE EN METRO Y 1 UN VIAJE EN METROBUS');
@@ -54,14 +54,14 @@ BEGIN
 	 writeln('i METROTARJETA/ ROJO/ 20 VIAJES- 30 VIAJES- 40 VIAJES');
 	 writeln('j METROTRAJETA INTEGRADA/ ROJO/ 20 VIAJES- 30 VIAJES- 40 VIAJES- (METRO Y METROBUS) ');
 	 readln(opcion);
-	 opcion:= lowercase(opcion);
+	 opcion:= lowercase(opcion);// ESTA OPCION SIRVE PARA CAMBIAR LAS LETRAS MAYUSCULAS A LETRAS MINUSCULAS, ASI SI EL USUARIO INGRESA LA MAYUSCULA PUEDA CORRER EL PROGRAMA
 	  
-	 until (opcion = 'a') or (opcion = 'b') or (opcion = 'c') or (opcion = 'd') or (opcion = 'e') or (opcion = 'f') or (opcion = 'g') or (opcion = 'h') or (opcion = 'i') or (opcion = 'j');
+	 until (opcion = 'a') or (opcion = 'b') or (opcion = 'c') or (opcion = 'd') or (opcion = 'e') or (opcion = 'f') or (opcion = 'g') or (opcion = 'h') or (opcion = 'i') or (opcion = 'j');// EN CASO DE LA QUE ELIJA UNA OPCION CORRECTA SE ACCEDERA AL CASE
 	 clrscr;
-	 case opcion of
+	 case opcion of // SE INICIALIZA EL PRIMER CASE 
 
     'a':
-        begin
+        begin // SE LE MUESTRA AL USUARIO LA OPCION QUE EL ELIGIO, CON SU RESPECTIVO PRECIO DE BOLETO, Y ASI EN CADA CASO
         textcolor(yellow);
 	    writeln (' -------------------------------------------------------------------');
         writeln ('|  a. BOLETO SIMPLE    |      AMARILLO     |      1 VIAJE EN METRO  |');
@@ -369,9 +369,9 @@ BEGIN
 
 	end;
       end;
-      if ticket = 01 then
+      if ticket = 01 then  // EN CADA CASO EXISTE UNA VARIABLE TICKET QUE ES IGUAL A UNO, POR LO TANTO LA OPCION QUE ELIJA LO LLEVARA DIRECTAMENTE A MOSTRALE LAS LINEAS DE TREN DISPONIBLE
        repeat
-       begin
+       begin // SE MUESTRAN LAS LINEAS
         writeln ('------------------');
         writeln ('LINEAS DISPONIBLE');
         writeln ('------------------');
@@ -394,15 +394,15 @@ BEGIN
         writeln (' -----------------');
         textColor(15);
         writeln ();
-        writeln ('INDIQUE LA LINEA DE VIAJE');
+        writeln ('INDIQUE LA LINEA DE VIAJE'); // SE LE PIDE AL USUARIO QUE INGRESE LA LINEA EN LA QUE QUIERE VIAJAR
         readln (linea);
         clrscr();
 	   end;
 	   until linea<=8;
-	   case linea of
+	   case linea of // INICIALIZACION DEL CASE POR LA LINEA QUE ELIJA EL USUARIO
 
            1:
-            begin
+            begin // SE LE MUESTRAN LAS LINEAS DE LA OPCION 1 CON TODAS SUS SUB-ESTACIONES
 				repeat
               writeln('Usted selecciono LINEA 1');
               writeln (' --------------------------------------------------------------------------------');
@@ -418,13 +418,13 @@ BEGIN
               subestacion:= lowercase(subestacion);
 				until subestacion<='f';
 				clrscr;
-              case subestacion of
+              case subestacion of // SE INICIALIZA UN CASE PARA LA SUB ESTACION ELEGIDA
 
 
                'a':
                   begin
 
-                   ticket := 02;
+                   ticket := 02; // ESTO IDENTIFICA AL TICKET AL FINAL DEL PROGRAMA PARA SABER QUE ELIGIO EL USUARIO
 
 
                    writeln (' LINEA 1 - SUBESTACION A');
@@ -859,7 +859,7 @@ BEGIN
              end;
 
            2:
-            begin
+            begin // ACA EL MISMO CASO ANTERIOR 
 				repeat
               writeln ('Usted selecciono LINEA 2');
               writeln (' ----------------------------------------------------------------------');
@@ -1361,7 +1361,7 @@ BEGIN
             end;
 
            4:
-            begin
+            begin // CONTINUAMOS CON LAS SUB-ESTACIONES
               writeln ('Usted selecciono LINEA 4');
 
               writeln (' --------------------------------------------------------------------------');
@@ -2437,7 +2437,7 @@ BEGIN
         end;
         if ticket = 02 then
 
-          begin
+          begin // UNA VEZ ELEGIDAS LAS SUB ESTACIONES Y LOS BOLETOS SE LE MUESTRA LA FACTURA AL CLIENTE, DONDE DESTACA EL PRECIO, LA SUB ESTACION DE SALIDA Y LLEGADA, Y SUS DATOS PERSONALES
 
           clrscr();
 
@@ -2457,13 +2457,13 @@ BEGIN
           writeln ('| LLEGADA: ', llegadat);
           writeln ('|                                                                                                |');
           writeln (' ------------------------------------------------------------------------------------------------');
-          repeat
+          repeat // SE LE PREGUNTA AL USUARIO SI ESTA SEGURO DE SU COMPRA
           writeln ('¨ESTA SEGURO DE SU COMPRA?');
           writeln ('1.SI ');
           writeln ('2.NO ');
           readln (comprar);
           writeln ('---------------------------------');
-			until comprar<3;
+			until comprar<3; // EN CASO DE QUE SI ESTE SEGURO DE SU COMPRA SE LE PIDE LO SIGUIENTE
             if comprar = 1 then
 
                begin
@@ -2471,14 +2471,14 @@ BEGIN
                 writeln ('PARA FINALIZAR COMPRA SU COMPRA  ');
                 writeln ('---------------------------------');
 
-                writeln ('PAGUE EL MONTO INDICADO');
+                writeln ('PAGUE EL MONTO INDICADO'); // SE LE MUESTRA EL PRECIO Y SE LE PIDE QUE INGRESE CON CUANTO DINERO VA A PAGAR
                 writeln ('PRECIO TOTAL : ', preciou:5:2, ' $');
 
                 writeln ('---------------------------------');
                 write ('INGRESAR MONTO: ');
                 readln  (monto);
 
-                  if monto = preciou then
+                  if monto = preciou then // EN CASO DE EL USUARIO PAGUE EXATO SE LE MUESTRA ESTE MENSAJE
 
                      begin
                       writeln ('----------------------------------------');
@@ -2489,7 +2489,7 @@ BEGIN
 
                      end
 
-                     else if monto < preciou then
+                     else if monto < preciou then //EN CASO DE QUE EL MONTO SEA MENOR QUE EL PRECIO TOTAL A PAGAR, SE LE INDICA QUE FALTA Y QUE INGRESE EL RESTANTE
 
                        begin
                        writeln ('----------------------------------------');
@@ -2499,7 +2499,7 @@ BEGIN
                        Writeln ('INGRESE EL DINERO RESTANTE');
                        end
 
-                     else if monto > preciou then
+                     else if monto > preciou then // EN CASO DE QUE HAYA DADO MAS DINERO, SE LE DA EL VUELTO Y SE DESPIDE
 
                        begin
                        writeln ('----------------------------------------');
@@ -2516,7 +2516,7 @@ BEGIN
                      end;
                end
 
-            else if comprar = 2 then
+            else if comprar = 2 then // EN CASO DE QUE NO QUIERA COMPRAR SU VOLETO Y SALIR DEL SISTEMA SE LE MUESTRA ESTE MENSAJE DE ADIOS
 
                begin
                  clrscr();
@@ -2532,5 +2532,5 @@ BEGIN
           end
 	  
 	until boletos=2;
-	writeln('GRACIAS POR PREFERIRNOS VUELVA PRONTO');
+	writeln('GRACIAS POR PREFERIRNOS VUELVA PRONTO'); //MENSAJE POR SI EL USUARIO NO DECIDE INGRESAR AL SISTEMA
 end.
